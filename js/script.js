@@ -1,54 +1,77 @@
-// Function `loadDataWithGetJSON` fetches data from 'team.json' using jQuery's getJSON method
-function loadDataWithGetJSON() {
-    // Sending an HTTP GET request to 'team.json'
-    $.getJSON('team.json', function(data) {
-        var teamHtml = '';  // Empty string for building HTML structure
-        // Iterating over each item in the data object
-        $.each(data, function (index, member) {
-            // Concatenating member's details to the HTML structure
-            teamHtml += '<h2>' + member.name + '</h2>';
-            teamHtml += '<h5>' + member.position + '</h5>';
-            teamHtml += '<p>' + member.bio + '</p>';
-        });
-        // Setting HTML content of the element with id 'team' to `teamHtml`
-        $('#team').html(teamHtml);
-    });
-}
+/*
 
-// Function `loadDataWithAjax` fetches data from 'team.json' using jQuery's ajax method
-function loadDataWithAjax() {
-    // Sending an AJAX request
-    $.ajax({
-        url: 'team.json',  // Request URL
-        type: 'GET',  // HTTP method
-        dataType: 'json',  // Expected data type
-        beforeSend: function() {
-            // Setting 'Loading...' message before sending the request
-            $('#team').html('Loading...');
-        },
-        error: function() {
-            // Setting error message on request failure
-            $('#team').html('The content could not be retrieved.');
-        },
-        success: function(data) {
-            var teamHtml = '';  // Empty string for building HTML structure
-            // Iterating over each item in the data object
-            $.each(data, function(index, member) {
-                // Concatenating member's details to the HTML structure
-                teamHtml += '<h2>' + member.name + '</h2>';
-                teamHtml += '<h5>' + member.position + '</h5>';
-                teamHtml += '<p>' + member.bio + '</p>';
-            });
-            // Setting HTML content of the element with id 'team' to `teamHtml`
-            $('#team').html(teamHtml);
-        }
-    });
-}
+Assignment #4
 
-// Executing the following code only after document is ready
-$(document).ready(function() {
-    // Calling `loadDataWithGetJSON` function to load and display data
-    loadDataWithGetJSON();
-    // Uncomment below line to use `loadDataWithAjax` function instead
-    // loadDataWithAjax();
+{Aditya}
+
+*/
+
+$(function () {
+
+  // Check for geolocation support
+  if (!navigator.geolocation) {
+    document.getElementById('locationhere').textContent = "Geolocation is not supported by your browser.";
+    return;
+  }
+
+  // Provided function to calculate distance
+  function calcDistanceBetweenPoints(lat1, lon1, lat2, lon2) {
+    var toRadians = function (num) {
+      return num * Math.PI / 180;
+    }
+
+    var R = 6371000; // radius of Earth in metres
+    var φ1 = toRadians(lat1);
+    var φ2 = toRadians(lat2);
+    var Δφ = toRadians(lat2 - lat1);
+    var Δλ = toRadians(lon2 - lon1);
+    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return (R * c);
+  }
+
+  function showLocation(position) {
+    const currentLatitude = position.coords.latitude;
+    const currentLongitude = position.coords.longitude;
+
+    try {
+      const storedLocation = JSON.parse(localStorage.getItem('location'));
+
+      if (storedLocation) {
+        const distance = calcDistanceBetweenPoints(currentLatitude, currentLongitude, storedLocation.latitude, storedLocation.longitude);
+
+        const oldLocationElement = document.createElement('p');
+        oldLocationElement.textContent = `Previous Latitude: ${storedLocation.latitude} °, Previous Longitude: ${storedLocation.longitude} °`;
+
+        const welcomeBackHeader = document.createElement('h3');
+        welcomeBackHeader.textContent = 'Welcome back!';
+
+        const distanceElement = document.createElement('p');
+        distanceElement.textContent = `You traveled ${distance.toFixed(2)} meters since your last visit.`;
+
+        const parentElement = document.getElementById('locationhere').parentNode;
+
+        parentElement.appendChild(oldLocationElement);
+        parentElement.appendChild(welcomeBackHeader);
+        parentElement.appendChild(distanceElement);
+      } else {
+        const firstTimeHeader = document.createElement('h3');
+        firstTimeHeader.textContent = 'Welcome for the first time!';
+        document.getElementById('locationhere').parentNode.appendChild(firstTimeHeader);
+      }
+
+      localStorage.setItem('location', JSON.stringify({ latitude: currentLatitude, longitude: currentLongitude }));
+
+    } catch (e) {
+      console.error("Error accessing or manipulating localStorage:", e);
+    }
+
+    document.getElementById('locationhere').textContent = `Latitude: ${currentLatitude} °, Longitude: ${currentLongitude} °`;
+  }
+
+  function showError() {
+    document.getElementById('locationhere').textContent = "You must allow geolocation to use this application.";
+  }
+
+  navigator.geolocation.getCurrentPosition(showLocation, showError);
 });
