@@ -1,44 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-	<title>Welcome to E Corp.</title>
-	<link href="styles.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/photoViewer.css" rel="stylesheet">
 </head>
-
 <body>
-	<section id="container">
-		<header></header>
+    
 
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="aboutus.html">About Us</a></li>
-				<li><a href="solutions.html">Solutions</a></li>
-				<li><a href="support.html">Support</a></li>
-				<li><a href="contactus.html">Contact Us</a></li>
-			</ul>
-		</nav>
+<button id="open-box"><h2>Adi Bhoite Gallery</h2></button>
+<div id="box-container">
+    <img class="img-pic" src="img/full-sized-photo-1.jpg"/>
+    
+    <img class="img-pic" src="img/full-sized-photo-2.jpg"/>
+    
+    <img class="img-pic" src="img/full-sized-photo-3.jpg"/>
+    
+    <img class="img-pic" src="img/full-sized-photo-4.jpg"/>
+   
+    <img class="img-pic" src="img/full-sized-photo-5.jpg"/>
+    <button id="close"><span><h2>Close</h2></span></button>
+</div>
 
-		<section id="content">
-			<h2>music</h2>
+    <h1>Adi Bhoite Gallery</h1>
+    <div id="photo-viewer">
 
-			<div id="content-item-list">
-				<!-- sample of what your toString should output
-					<div id="content-item-0">
-						<h4>name here</h4>
-						<p>description here</p>
-						<div>category genre here</div>
-					</div>
-				-->
-			</div>
-		</section>
+    </div>
 
-		<footer></footer>
-	</section>
+        <a href="#" class="photo-box is-loading"></a>
+        <div class="photo-thumbnails">
+            <a href="img/full-sized-photo-1.jpg" class="thumbnail-anchor active" title="photo 1">
+                <img src="img/thumbnail-photo-1.jpg" alt="thumbnail 1">
+            </a>
+            <a href="img/full-sized-photo-2.jpg" class="thumbnail-anchor" title="photo 2">
+                <img src="img/thumbnail-photo-2.jpg" alt="thumbnail 2">
+            </a>
+            <a href="img/full-sized-photo-3.jpg" class="thumbnail-anchor" title="photo 3">
+                <img src="img/thumbnail-photo-3.jpg" alt="thumbnail 3">
+            </a>
+            <a href="img/full-sized-photo-4.jpg" class="thumbnail-anchor" title="photo 4">
+                <img src="img/thumbnail-photo-4.jpg" alt="thumbnail 4">
+            </a>
+            <a href="img/full-sized-photo-5.jpg" class="thumbnail-anchor" title="photo 5">
+                <img src="img/thumbnail-photo-5.jpg" alt="thumbnail 5">
+            </a>
+        </div>
 
-	<script src="jquery.js"></script>
-	<script src="script.js"></script>
+       
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    
+    <pre>
+        <code>
+            photo-1: https://www.google.com/imgres?imgurl=https%3A%2F%2Fhips.hearstapps.com%2Fhmg-prod%2Fimages%2F2021-toyota-gr-supra-117-1581523763.jpg&tbnid=q0FOqu0z3O3VNM&vet=12ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygBegQIARBx..i&imgrefurl=https%3A%2F%2Fwww.caranddriver.com%2Ffeatures%2Fg27197524%2Fbest-sports-cars%2F&docid=KH1QiWwDxT_QyM&w=3600&h=2399&itg=1&q=sports%20car&ved=2ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygBegQIARBx
+            photo-2: https://www.google.com/imgres?imgurl=https%3A%2F%2Fimageio.forbes.com%2Fspecials-images%2Fimageserve%2F6064af50093e0936dc61b40f%2F2020-Ford-GT%2F960x0.jpg%3Fheight%3D474%26width%3D711%26fit%3Dbounds&tbnid=2pTOOC4XAR46pM&vet=12ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygEegQIARB3..i&imgrefurl=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fmichaelharley%2F2021%2F03%2F31%2Fsports-car-classifications-what-is-a-hypercar%2F&docid=7iqvmyNpuZTaTM&w=711&h=474&q=sports%20car&ved=2ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygEegQIARB3
+            photo-3: https://www.google.com/imgres?imgurl=https%3A%2F%2Frobbreport.com%2Fwp-content%2Fuploads%2F2013%2F09%2F4015031.jpg%3Fw%3D991&tbnid=hbR5NxStgo5roM&vet=12ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygLegUIARCFAQ..i&imgrefurl=https%3A%2F%2Frobbreport.com%2Fmotors%2Fcars%2Fbest-of-the-best-2011-sports-cars-ferrari-458-italia-227199%2F&docid=dlYgHIk8x40Z-M&w=991&h=562&q=sports%20car&ved=2ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygLegUIARCFAQ
+            photo-4: https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.motortrend.com%2Fuploads%2F2022%2F08%2F2022-Bugatti-Chiron-Super-Sport-38.jpg&tbnid=86Leia_jYYXiTM&vet=12ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygNegUIARCJAQ..i&imgrefurl=https%3A%2F%2Fwww.motortrend.com%2Ffeatures%2Ffastest-production-cars%2F&docid=Km5Cg591cvSEbM&w=1920&h=1080&q=sports%20car&ved=2ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMygNegUIARCJAQ
+            photo-5: https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.pixexid.com%2Fnissan-gt-r-concept-sports-car-7eo9qw2y.jpeg&tbnid=vWDHeRn6oDvC2M&vet=12ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMyg7egUIARDwAQ..i&imgrefurl=https%3A%2F%2Fpixexid.com%2Fimage%2Fnissan-gt-r-concept-sports-car-7eo9qw2y&docid=sg5TDl338gpP_M&w=4608&h=3072&q=sports%20car&ved=2ahUKEwjGyuDR1cSCAxUaHWIAHQ80DHgQMyg7egUIARDwAQ
+        </code>
+    </pre>
 </body>
-
 </html>
